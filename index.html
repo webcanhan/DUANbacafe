@@ -81,7 +81,7 @@
             gap: 30px;
         }
 
-        /* Hero Header có hình nền cà phê */
+        /* Hero Header */
         .hero-section {
             position: relative;
             border-radius: 16px;
@@ -130,11 +130,11 @@
         .hero-section p {
             color: #e0e0e0;
             font-size: 0.95rem;
-            max-width: 750k;
+            max-width: 750px;
             text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
 
-        /* Grid danh mục bo tròn mượt mà kết hợp hình nền nhỏ */
+        /* Grid danh mục */
         .category-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -186,7 +186,7 @@
             color: var(--accent-light);
         }
 
-        /* Bảng thành phần thu gọn tinh tế */
+        /* Bảng thành phần chi tiết có hình ảnh minh họa */
         .content-section {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -196,46 +196,82 @@
 
         .content-section h2 {
             font-family: 'Lora', serif;
-            font-size: 1.3rem;
-            margin-bottom: 20px;
+            font-size: 1.4rem;
+            margin-bottom: 8px;
             color: var(--text-main);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
+        }
+
+        .subtitle-table {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 25px;
         }
 
         .ingredient-list {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 15px;
         }
 
         .ingredient-item {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
             background: rgba(255, 255, 255, 0.02);
-            padding: 12px 16px;
-            border-radius: 8px;
+            padding: 14px 18px;
+            border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.04);
+            gap: 15px;
         }
 
-        .ing-name {
-            font-weight: 500;
-            font-size: 0.9rem;
+        .ing-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
-        .ing-origin {
+        .ing-thumb {
+            width: 55px;
+            height: 55px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid var(--border-color);
+            background-color: #222;
+        }
+
+        .ing-info h4 {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 3px;
+        }
+
+        .ing-info p {
+            font-size: 0.8rem;
             color: var(--text-muted);
-            font-size: 0.85rem;
+        }
+
+        .ing-right {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
         }
 
         .ing-percent {
             background: #272a35;
             color: var(--accent-light);
-            padding: 3px 8px;
+            padding: 3px 10px;
             border-radius: 6px;
             font-size: 0.8rem;
             font-weight: 600;
+        }
+
+        .ing-role {
+            font-size: 0.75rem;
+            color: #b0bec5;
+            max-width: 250px;
+            text-align: right;
         }
 
         /* Footer */
@@ -262,12 +298,26 @@
             .nav-links {
                 display: none;
             }
+            .ingredient-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .ing-right {
+                align-items: flex-start;
+                text-align: left;
+                width: 100%;
+                margin-top: 8px;
+            }
+            .ing-role {
+                text-align: left;
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Thanh điều hướng tối giản -->
+    <!-- Thanh điều hướng -->
     <nav>
         <div class="logo">☕ TỪ BÃ ĐẾN MỘC</div>
         <div class="nav-links">
@@ -280,17 +330,17 @@
     <!-- Khung nội dung chính -->
     <div class="page-container">
 
-        <!-- Banner thông tin dự án có hình ảnh cà phê -->
+        <!-- Banner dự án -->
         <header class="hero-section">
             <div class="hero-overlay"></div>
             <div class="hero-content">
                 <span class="badge">DỰ ÁN XANH - ECO FRIENDLY</span>
                 <h1>RE: COFFEE SCRUB</h1>
-                <p>Sản phẩm tẩy tế bào chết toàn thân kết hợp từ bã cà phê nguyên chất, dầu dừa và thảo mộc tự nhiên Việt Nam. An toàn tuyệt đối cho làn da và thân thiện với hệ sinh thái.</p>
+                <p>Sản phẩm tẩy tế bào chết toàn thân kết hợp từ bã cà phê nguyên chất thu gom, dầu dừa và thảo mộc tự nhiên Việt Nam. An toàn tuyệt đối cho làn da và thân thiện với hệ sinh thái.</p>
             </div>
         </header>
 
-        <!-- Thẻ danh mục nhanh có hình nền cà phê tinh tế -->
+        <!-- Thẻ danh mục nhanh -->
         <section class="category-grid">
             <div class="cat-card" style="background-image: url('https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=400&auto=format&fit=crop');">
                 <span>Bã Cà Phê</span>
@@ -310,44 +360,153 @@
             </div>
         </section>
 
-        <!-- Bảng thành phần rút gọn sang trọng -->
+        <!-- Bảng thành phần chi tiết có hình ảnh minh họa -->
         <section class="content-section">
-            <h2>Tóm Tắt Bảng Thành Phần Dự Kiến</h2>
+            <h2>Bảng Thành Phần: RE: COFFEE SCRUB</h2>
+            <div class="subtitle-table">Công thức dự kiến – Tỷ lệ chuẩn hóa từ nguyên liệu tự nhiên Việt Nam</div>
+            
             <div class="ingredient-list">
+                <!-- 1. Bã cà phê -->
                 <div class="ingredient-item">
-                    <div>
-                        <div class="ing-name">Bã cà phê sấy mịn</div>
-                        <div class="ing-origin">Đắk Lắk, Lâm Đồng</div>
+                    <div class="ing-left">
+                        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=200&auto=format&fit=crop" alt="Bã cà phê" class="ing-thumb">
+                        <div class="ing-info">
+                            <h4>1. Bã Cà Phê (Coffee Grounds)</h4>
+                            <p>Nguồn gốc: Đắk Lắk, Lâm Đồng (Thu gom từ quán)</p>
+                        </div>
                     </div>
-                    <div class="ing-percent">40.0%</div>
+                    <div class="ing-right">
+                        <span class="ing-percent">40,0%</span>
+                        <span class="ing-role">Hạt tẩy tế bào chết tự nhiên, làm sạch bề mặt da.</span>
+                    </div>
                 </div>
+
+                <!-- 2. Dầu dừa -->
                 <div class="ingredient-item">
-                    <div>
-                        <div class="ing-name">Dầu dừa nguyên chất</div>
-                        <div class="ing-origin">Bến Tre (Ép lạnh)</div>
+                    <div class="ing-left">
+                        <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?q=80&w=200&auto=format&fit=crop" alt="Dầu dừa" class="ing-thumb">
+                        <div class="ing-info">
+                            <h4>2. Dầu Dừa Nguyên Chất (Coconut Oil)</h4>
+                            <p>Nguồn gốc: Bến Tre (100% dừa hữu cơ)</p>
+                        </div>
                     </div>
-                    <div class="ing-percent">20.0%</div>
+                    <div class="ing-right">
+                        <span class="ing-percent">20,0%</span>
+                        <span class="ing-role">Dưỡng ẩm, làm mềm da, giúp hạt scrub massage êm ái.</span>
+                    </div>
                 </div>
+
+                <!-- 3. Bột gạo -->
                 <div class="ingredient-item">
-                    <div>
-                        <div class="ing-name">Bột gạo hữu cơ</div>
-                        <div class="ing-origin">Đồng bằng sông Cửu Long</div>
+                    <div class="ing-left">
+                        <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=200&auto=format&fit=crop" alt="Bột gạo" class="ing-thumb">
+                        <div class="ing-info">
+                            <h4>3. Bột Gạo (Rice Powder)</h4>
+                            <p>Nguồn gốc: Đồng bằng sông Cửu Long</p>
+                        </div>
                     </div>
-                    <div class="ing-percent">15.0%</div>
+                    <div class="ing-right">
+                        <span class="ing-percent">15,0%</span>
+                        <span class="ing-role">Hạt scrub nhẹ, làm sạch sâu và hỗ trợ làm mịn da.</span>
+                    </div>
                 </div>
+
+                <!-- 4. Mật ong -->
                 <div class="ingredient-item">
-                    <div>
-                        <div class="ing-name">Mật ong nguyên chất</div>
-                        <div class="ing-origin">Hoa rừng tự nhiên</div>
+                    <div class="ing-left">
+                        <img src="https://images.unsplash.com/photo-1587049352847-4a222e784d38?q=80&w=200&auto=format&fit=crop" alt="Mật ong" class="ing-thumb">
+                        <div class="ing-info">
+                            <h4>4. Mật Ong Nguyên Chất (Pure Honey)</h4>
+                            <p>Nguồn gốc: Mật ong hoa rừng tự nhiên Việt Nam</p>
+                        </div>
                     </div>
-                    <div class="ing-percent">10.0%</div>
+                    <div class="ing-right">
+                        <span class="ing-percent">10,0%</span>
+                        <span class="ing-role">Dưỡng ẩm tự nhiên, giúp da mềm mại và sáng khỏe.</span>
+                    </div>
                 </div>
+
+                <!-- 5. Bột trà xanh -->
+                <div class="ingredient-item">
+                    <div class="ing-left">
+                        <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?q=80&w=200&auto=format&fit=crop" alt="Bột trà xanh" class="ing-thumb">
+                        <div class="ing-info">
+                            <h4>5. Bột Trà Xanh (Green Tea Powder)</h4>
+                            <p>Nguồn gốc: Thái Nguyên, Lâm Đồng (Hữu cơ)</p>
+                        </div>
+                    </div>
+                    <div class="ing-right">
+                        <span class="ing-percent">5,0%</span>
+                        <span class="ing-role">Chống oxy hóa, làm dịu da và hỗ trợ kháng viêm.</span>
+                    </div>
+                </div>
+
+                <!-- 6. Dầu cám gạo -->
+                <div class="ingredient-item">
+                    <div class="ing-left">
+                        <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?q=80&w=200&auto=format&fit=crop" alt="Dầu cám gạo" class="ing-thumb">
+                        <div class="ing-info">
+                            <h4>6. Dầu Cám Gạo (Rice Bran Oil)</h4>
+                            <p>Nguồn gốc: Việt Nam (Ép lạnh nguyên chất)</p>
+                        </div>
+                    </div>
+                    <div class="ing-right">
+                        <span class="ing-percent">5,0%</span>
+                        <span class="ing-role">Giàu vitamin E, nuôi dưỡng làn da săn chắc, mềm mại.</span>
+                    </div>
+                </div>
+
+                <!-- 7. Tinh dầu sả chanh -->
+                <div class="ingredient-item">
+                    <div class="ing-left">
+                        <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?q=80&w=200&auto=format&fit=crop" alt="Tinh dầu sả chanh" class="ing-thumb">
+                        <div class="ing-info">
+                            <h4>7. Tinh Dầu Sả Chanh (Lemongrass Oil)</h4>
+                            <p>Nguồn gốc: Vùng trồng hữu cơ Việt Nam</p>
+                        </div>
+                    </div>
+                    <div class="ing-right">
+                        <span class="ing-percent">1,0%</span>
+                        <span class="ing-role">Tạo hương thơm thư giãn, sảng khoái tự nhiên.</span>
+                    </div>
+                </div>
+
+                <!-- 8. Vitamin E -->
+                <div class="ingredient-item">
+                    <div class="ing-left">
+                        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=200&auto=format&fit=crop" alt="Vitamin E" class="ing-thumb">
+                        <div class="ing-info">
+                            <h4>8. Vitamin E (Tocopherol)</h4>
+                            <p>Nguồn gốc: Nhập khẩu nguyên gốc thực vật</p>
+                        </div>
+                    </div>
+                    <div class="ing-right">
+                        <span class="ing-percent">0,5%</span>
+                        <span class="ing-role">Chất chống oxy hóa, bảo vệ các thành phần dưỡng chất.</span>
+                    </div>
+                </div>
+
+                <!-- 9. Phần còn lại -->
+                <div class="ingredient-item">
+                    <div class="ing-left">
+                        <div style="width: 55px; height: 55px; border-radius: 8px; background: #222; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; border: 1px solid var(--border-color);">💧</div>
+                        <div class="ing-info">
+                            <h4>9. Phần Còn Lại (Điều chỉnh kết cấu)</h4>
+                            <p>Không chứa paraben, silicon hay chất tạo màu tổng hợp</p>
+                        </div>
+                    </div>
+                    <div class="ing-right">
+                        <span class="ing-percent">3,5%</span>
+                        <span class="ing-role">Cân bằng độ ẩm, độ sệt và ổn định sản phẩm.</span>
+                    </div>
+                </div>
+
             </div>
         </section>
 
         <!-- Footer -->
         <footer>
-            <p>&copy; 2026 Từ Bã Đến Mộc. Thiết kế tối giản, tinh tế trên một trang.</p>
+            <p>&copy; 2026 Dự án Từ Bã Đến Mộc. Thiết kế tối giản, tinh tế trên một trang.</p>
         </footer>
 
     </div>
