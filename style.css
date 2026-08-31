@@ -1,52 +1,209 @@
-/* Cài đặt chung cho toàn bộ trang */
+/* Reset và cài đặt chung */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f7f6;
-    color: #333;
+    font-family: 'Montserrat', sans-serif; /* Font chính hiện đại */
+    background-color: #fbfaf6; /* Màu nền kem nhạt */
+    color: #5D4037; /* Màu chữ nâu cà phê đậm */
     margin: 0;
     padding: 0;
+    line-height: 1.6;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* Định dạng phần tiêu đề đầu trang */
+h1, h2 {
+    font-family: 'Lora', serif; /* Font tiêu đề có chân sang trọng */
+    margin-top: 0;
+    color: #3E2723; /* Màu nâu đậm hơn cho tiêu đề */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Phần đầu trang (Header) */
 header {
-    background-color: #2c3e50;
+    background-color: #A1887F; /* Màu nền nâu cà phê */
     color: white;
     text-align: center;
-    padding: 2rem 1rem;
+    padding: 40px 20px;
+    border-bottom: 5px solid #8D6E63;
 }
 
-/* Định dạng phần nội dung chính */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.logo-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    padding: 5px;
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+header h1 {
+    color: white;
+    font-size: 3rem;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+/* Phần nội dung chính (Main) */
 main {
     flex: 1;
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-    width: 100%;
-    box-sizing: border-box;
+    padding: 40px 0;
 }
 
-/* Định dạng các khối nội dung */
+/* Các khối nội dung (Card) */
 .card {
     background: white;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    border-left: 8px solid #8D6E63; /* Viền trang trí màu nâu */
+}
+
+.project-intro h2 {
+    font-size: 2.5rem;
+}
+
+.project-title {
+    color: #6D4C41;
+    font-weight: 700;
+    border-bottom: 2px dotted #A1887F;
+}
+
+.icon-container {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+/* Bố cục dạng lưới */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.highlights ul, .partnerships ul {
+    padding-left: 20px;
+}
+
+.highlights li, .partnerships li {
+    margin-bottom: 10px;
+}
+
+/* Bảng thành phần (Ingredients Table) */
+.ingredients-table h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+th, td {
+    text-align: left;
+    padding: 15px;
+    border-bottom: 1px solid #D7CCC8; /* Màu viền bảng nhạt */
+}
+
+th {
+    background-color: #A1887F;
+    color: white;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+
+tbody tr:hover {
+    background-color: #FFFDE7; /* Màu nền khi di chuột qua hàng */
+}
+
+tfoot td {
+    font-weight: bold;
+    background-color: #D7CCC8;
+}
+
+/* Nút Kêu gọi hành động (CTA) */
+.cta-section {
+    margin-top: 40px;
+}
+
+.cta-button {
+    background-color: #8BC34A; /* Màu xanh lá cây tự nhiên */
+    color: #333;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    display: inline-block;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.card h2 {
-    color: #2c3e50;
-    margin-top: 0;
+.cta-button:hover {
+    background-color: #7CB342; /* Màu xanh lá đậm hơn khi hover */
+    transform: translateY(-3px);
 }
 
-/* Định dạng phần chân trang */
+/* Phần chân trang (Footer) */
 footer {
-    background-color: #34495e;
+    background-color: #3E2723; /* Màu nâu cà phê đậm nhất */
     color: white;
     text-align: center;
-    padding: 1rem;
+    padding: 25px 20px;
+    margin-top: auto;
+}
+
+footer p {
+    margin: 0;
+    opacity: 0.7;
     font-size: 0.9rem;
+}
+
+/* Tối ưu hóa cho thiết bị di động */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    .project-intro h2 {
+        font-size: 1.8rem;
+    }
 }
