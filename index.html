@@ -4,131 +4,314 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Từ Bã Đến Mộc - Trải Nghiệm Thiên Nhiên</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Lora:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0d0e12;
+            --card-bg: #16181e;
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --accent-brown: #8d6e63;
+            --accent-light: #ffccbc;
+            --border-color: #272a35;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background-color: rgba(13, 14, 18, 0.85);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-family: 'Lora', serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--accent-light);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--text-main);
+        }
+
+        /* Container tổng 1 trang */
+        .page-container {
+            max-width: 1100px;
+            margin: 90px auto 40px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* Hero Header */
+        .hero-section {
+            background: linear-gradient(135deg, #271c19 0%, #16181e 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .badge {
+            align-self: flex-start;
+            background-color: rgba(141, 110, 99, 0.3);
+            color: var(--accent-light);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid rgba(141, 110, 99, 0.5);
+        }
+
+        .hero-section h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            color: var(--text-main);
+        }
+
+        .hero-section p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            max-width: 800px;
+        }
+
+        /* Grid danh mục bo tròn mượt mà */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .cat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 110px;
+            cursor: pointer;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .cat-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-brown);
+        }
+
+        .cat-card span:first-child {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .cat-card span:last-child {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Bảng thành phần thu gọn tinh tế */
+        .content-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+        .content-section h2 {
+            font-family: 'Lora', serif;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--text-main);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .ingredient-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .ingredient-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .ing-name {
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .ing-origin {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .ing-percent {
+            background: #272a35;
+            color: var(--accent-light);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Footer nhỏ gọn trong trang */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 10px;
+        }
+
+        /* Responsive cho mobile */
+        @media (max-width: 768px) {
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero-section h1 {
+                font-size: 1.8rem;
+            }
+            nav {
+                padding: 15px 20px;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Thanh điều hướng (Navbar) -->
-    <nav class="navbar">
-        <div class="nav-left">
-            <span class="logo-text">☕ TỪ BÃ ĐẾN MỘC</span>
+    <!-- Thanh điều hướng tối giản -->
+    <nav>
+        <div class="logo">☕ TỪ BÃ ĐẾN MỘC</div>
+        <div class="nav-links">
             <a href="#" class="active">Trang Chủ</a>
             <a href="#">Thành Phần</a>
-            <a href="#">Giá Trị Cốt Lõi</a>
-            <a href="#">Về Dự Án</a>
-        </div>
-        <div class="nav-right">
-            <button class="btn-login">Thành viên</button>
+            <a href="#">Giá Trị</a>
         </div>
     </nav>
 
-    <!-- Banner chính ở đầu trang (Hero Banner) -->
-    <header class="hero-banner">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <span class="badge-tag">DỰ ÁN XANH</span>
+    <!-- Khung nội dung chính tập trung trên 1 màn hình cuộn mượt -->
+    <div class="page-container">
+
+        <!-- Banner thông tin dự án -->
+        <header class="hero-section">
+            <span class="badge">DỰ ÁN XANH - ECO FRIENDLY</span>
             <h1>RE: COFFEE SCRUB</h1>
-            <p class="hero-info">
-                <span>HD</span> <span>100% Tự nhiên</span> <span>Eco-Friendly</span> <span>Đắk Lắk - Bến Tre</span>
-            </p>
-            <p class="hero-desc">
-                Sản phẩm tẩy tế bào chết toàn thân đột phá từ bã cà phê nguyên chất kết hợp cùng dầu dừa, mật ong và các thảo mộc truyền thống Việt Nam. An toàn cho da, thân thiện với môi trường.
-            </p>
-            <div class="hero-buttons">
-                <button class="btn-play">▶ Khám Phá Ngay</button>
-                <button class="btn-secondary">ℹ Chi Tiết</button>
-            </div>
-        </div>
-    </header>
+            <p>Sản phẩm tẩy tế bào chết toàn thân kết hợp từ bã cà phê nguyên chất, dầu dừa và thảo mộc tự nhiên Việt Nam. An toàn tuyệt đối cho làn da và thân thiện với hệ sinh thái.</p>
+        </header>
 
-    <!-- Danh mục khám phá nhanh -->
-    <section class="section-container">
-        <h2 class="section-title">Bạn đang quan tâm gì?</h2>
-        <div class="category-grid">
-            <div class="category-card c-1">
-                <span>Bã Cà Phê Đắk Lắk</span>
-                <span class="sub-link">Xem chi tiết &gt;</span>
+        <!-- Thẻ danh mục nhanh -->
+        <section class="category-grid">
+            <div class="cat-card">
+                <span>Bã Cà Phê</span>
+                <span>Đắk Lắk, Lâm Đồng</span>
             </div>
-            <div class="category-card c-2">
-                <span>Dầu Dừa Nguyên Chất</span>
-                <span class="sub-link">Xem chi tiết &gt;</span>
+            <div class="cat-card">
+                <span>Dầu Dừa</span>
+                <span>Bến Tre (20.0%)</span>
             </div>
-            <div class="category-card c-3">
-                <span>Mật Ong Hoa Rừng</span>
-                <span class="sub-link">Xem chi tiết &gt;</span>
+            <div class="cat-card">
+                <span>Mật Ong</span>
+                <span>Hoa Rừng Tự Nhiên</span>
             </div>
-            <div class="category-card c-4">
-                <span>Thảo Mộc & Tinh Dầu</span>
-                <span class="sub-link">Xem chi tiết &gt;</span>
+            <div class="cat-card">
+                <span>Thảo Mộc</span>
+                <span>Trà xanh & Sả chanh</span>
             </div>
-            <div class="category-card c-5">
-                <span>Cam Kết Không Hóa Chất</span>
-                <span class="sub-link">Xem chi tiết &gt;</span>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Khối kêu gọi tương tác -->
-    <section class="section-container">
-        <div class="promo-box">
-            <div class="promo-text">
-                <h3>Minh bạch thành phần từ gốc</h3>
-                <p>Mọi nguồn gốc nguyên liệu đều được kiểm định chặt chẽ, đạt chuẩn an toàn cho da nhạy cảm và xu hướng làm đẹp bền vững (upcycling).</p>
-                <button class="btn-promo">Tìm hiểu thêm</button>
+        <!-- Bảng thành phần rút gọn sang trọng -->
+        <section class="content-section">
+            <h2>Tóm Tắt Bảng Thành Phần Dự Kiến</h2>
+            <div class="ingredient-list">
+                <div class="ingredient-item">
+                    <div>
+                        <div class="ing-name">Bã cà phê sấy mịn</div>
+                        <div class="ing-origin">Đắk Lắk, Lâm Đồng</div>
+                    </div>
+                    <div class="ing-percent">40.0%</div>
+                </div>
+                <div class="ingredient-item">
+                    <div>
+                        <div class="ing-name">Dầu dừa nguyên chất</div>
+                        <div class="ing-origin">Bến Tre (Ép lạnh)</div>
+                    </div>
+                    <div class="ing-percent">20.0%</div>
+                </div>
+                <div class="ingredient-item">
+                    <div>
+                        <div class="ing-name">Bột gạo hữu cơ</div>
+                        <div class="ing-origin">Đồng bằng sông Cửu Long</div>
+                    </div>
+                    <div class="ing-percent">15.0%</div>
+                </div>
+                <div class="ingredient-item">
+                    <div>
+                        <div class="ing-name">Mật ong nguyên chất</div>
+                        <div class="ing-origin">Hoa rừng tự nhiên</div>
+                    </div>
+                    <div class="ing-percent">10.0%</div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Danh sách nội dung dạng cuộn ngang (Thành phần chính) -->
-    <section class="section-container">
-        <div class="section-header-flex">
-            <h2 class="section-title" style="margin-bottom: 0;">Thành Phần Chủ Chốt</h2>
-            <a href="#" class="view-all">Xem toàn bộ &gt;</a>
-        </div>
-        
-        <div class="row-scroll">
-            <!-- Item 1 -->
-            <div class="movie-card">
-                <div class="card-thumb" style="background: linear-gradient(135deg, #4E342E, #271C19);">
-                    <span class="tag-label">40.0%</span>
-                </div>
-                <h4>Bã Cà Phê Sấy Mịn</h4>
-                <p>Coffee grounds (Đắk Lắk, Lâm Đồng)</p>
-            </div>
-            <!-- Item 2 -->
-            <div class="movie-card">
-                <div class="card-thumb" style="background: linear-gradient(135deg, #795548, #4E342E);">
-                    <span class="tag-label">20.0%</span>
-                </div>
-                <h4>Dầu Dừa Nguyên Chất</h4>
-                <p>Coconut Oil (Bến Tre)</p>
-            </div>
-            <!-- Item 3 -->
-            <div class="movie-card">
-                <div class="card-thumb" style="background: linear-gradient(135deg, #8D6E63, #5D4037);">
-                    <span class="tag-label">15.0%</span>
-                </div>
-                <h4>Bột Gạo Hữu Cơ</h4>
-                <p>Rice Powder (ĐBSCL)</p>
-            </div>
-            <!-- Item 4 -->
-            <div class="movie-card">
-                <div class="card-thumb" style="background: linear-gradient(135deg, #A1887F, #6D4C41);">
-                    <span class="tag-label">10.0%</span>
-                </div>
-                <h4>Mật Ong Nguyên Chất</h4>
-                <p>Pure Honey (Hoa rừng tự nhiên)</p>
-            </div>
-        </div>
-    </section>
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 Từ Bã Đến Mộc. Thiết kế tối giản, tinh tế trên một trang.</p>
+        </footer>
 
-    <!-- Chân trang -->
-    <footer>
-        <p>&copy; 2026 Dự án Từ Bã Đến Mộc. Thiết kế theo phong cách hiện đại tối màu.</p>
-    </footer>
+    </div>
 
 </body>
 </html>
